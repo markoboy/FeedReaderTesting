@@ -67,6 +67,13 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+          it('should be displayed when clicked and hidden when clicked again.', function() {
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toBeFalsy();
+
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
+          });
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
