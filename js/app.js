@@ -54,7 +54,6 @@ function init() {
                  var container = $('.feed'),
                      title = $('.header-title'),
                      entries = result.feed.entries,
-                     entriesLen = entries.length,
                      entryTemplate = Handlebars.compile($('.tpl-entry').html());
 
                  title.html(feedName);   // Set the header text
@@ -93,8 +92,7 @@ google.setOnLoadCallback(init);
  * until the DOM is ready.
  */
 $(function() {
-    var container = $('.feed'),
-        feedList = $('.feed-list'),
+    var feedList = $('.feed-list'),
         feedItemTemplate = Handlebars.compile($('.tpl-feed-list-item').html()),
         feedId = 0,
         menuIcon = $('.menu-icon-link');
