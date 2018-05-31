@@ -90,20 +90,25 @@ $(function() {
     describe('New Feed Selection', function() {
         /* This is our seventh test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
+         * Store oldFeeds HTML code and newFeeds HTML code in order to test.
          */
+         let oldFeeds,
+             newFeeds;
+
          beforeEach(function(done) {
-            loadFeed(1, function() {
-                done();
+            loadFeed(0, function() {
+                oldFeeds = $('.feed').html();
+                // Load new feeds in order to check if the content changes.
+                loadFeed(1, function() {
+                    newFeeds = $('.feed').html();
+                    done();
+                });
             });
          });
 
          it('should change the page content', function(done) {
-            expect($('.header-title')[0].innerHTML).toBe(allFeeds[1].name);
-            // Change the page content.
-            loadFeed(0, function() {
-                expect($('.header-title')[0].innerHTML).toBe(allFeeds[0].name);
-                done();
-            });
+            expect(oldFeeds !== newFeeds).toBe(true);
+            done();
          });
     });
 }());
