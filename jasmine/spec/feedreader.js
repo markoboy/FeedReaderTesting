@@ -72,7 +72,7 @@ $(function() {
     describe('Initial Entries', function() {
         /* This is our sixth test that ensures when the loadFeed
          * function is called and completes its work, there is at least
-         * a single .entry-link element within the .feed container.
+         * a single .entry element within the .feed container.
          */
          beforeEach(function(done) {
             loadFeed(0, function() {
@@ -80,8 +80,8 @@ $(function() {
             });
          });
 
-         it('should have at least a single .entry-link element', function(done) {
-            expect($('.feed')[0].firstElementChild.className).toBe('entry-link');
+         it('should have at least a single .entry element', function(done) {
+            expect($('.feed .entry').length).toBeGreaterThan(0);
             done();
          });
     });
